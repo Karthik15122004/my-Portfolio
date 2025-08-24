@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern, accessible design system inspired by Tamara's style.
+All colors MUST be HSL. Clean, minimalist, professional theme.
+*/
+
+@layer base {
+  :root {
+    /* Base colors - Clean whites and neutral grays */
+    --background: 0 0% 100%;
+    --foreground: 220 9% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 9% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 9% 20%;
+
+    /* Primary - Deep charcoal for elegance */
+    --primary: 220 9% 20%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secondary - Light neutrals */
+    --secondary: 210 11% 96%;
+    --secondary-foreground: 220 9% 20%;
+
+    --muted: 210 11% 96%;
+    --muted-foreground: 220 9% 55%;
+
+    /* Accent - Subtle blue for links */
+    --accent: 212 100% 47%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 214 13% 92%;
+    --input: 214 13% 92%;
+    --ring: 212 100% 47%;
+
+    --radius: 8px;
+
+    /* Portfolio-specific colors */
+    --hero-primary: 220 9% 20%;
+    --hero-secondary: 220 9% 55%;
+    --tech-bg: 210 11% 96%;
+    --tech-text: 220 9% 20%;
+    --section-bg: 210 16% 98%;
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode - Deep navy with light text */
+    --background: 220 26% 8%;
+    --foreground: 210 11% 96%;
+
+    --card: 220 26% 10%;
+    --card-foreground: 210 11% 96%;
+
+    --popover: 220 26% 10%;
+    --popover-foreground: 210 11% 96%;
+
+    --primary: 210 11% 96%;
+    --primary-foreground: 220 26% 8%;
+
+    --secondary: 220 26% 14%;
+    --secondary-foreground: 210 11% 96%;
+
+    --muted: 220 26% 14%;
+    --muted-foreground: 220 9% 65%;
+
+    --accent: 212 100% 60%;
+    --accent-foreground: 220 26% 8%;
+
+    --destructive: 0 72% 65%;
+    --destructive-foreground: 220 26% 8%;
+
+    --border: 220 26% 14%;
+    --input: 220 26% 14%;
+    --ring: 212 100% 60%;
+
+    /* Dark mode portfolio colors */
+    --hero-primary: 210 11% 96%;
+    --hero-secondary: 220 9% 65%;
+    --tech-bg: 220 26% 14%;
+    --tech-text: 210 11% 96%;
+    --section-bg: 220 26% 6%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--section-bg)) 100%);
+  }
+
+  .tech-tag {
+    @apply inline-block px-3 py-1.5 text-sm font-medium rounded-lg;
+    background: hsl(var(--tech-bg));
+    color: hsl(var(--tech-text));
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-smooth);
+  }
+
+  .tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--accent) / 0.3);
+  }
+
+  .section-padding {
+    @apply px-6 py-20 lg:px-8;
+  }
+
+  .container-width {
+    @apply max-w-5xl mx-auto;
+  }
+
+  .smooth-hover {
+    transition: var(--transition-smooth);
+  }
+
+  .smooth-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px hsl(var(--primary) / 0.15);
+  }
+
+  /* Accessibility-focused link styles */
+  .focus-visible {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Form styles */
+  .form-input {
+    @apply w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none transition-all;
+  }
+
+  .form-textarea {
+    @apply w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/20 focus:outline-none transition-all resize-y min-h-[120px];
+  }
+
+  /* Theme toggle animations */
+  .theme-toggle {
+    @apply p-2 rounded-lg bg-muted hover:bg-accent/10 transition-all focus-visible;
+  }
+
+  /* Page fade-in animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Scroll reveal animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
